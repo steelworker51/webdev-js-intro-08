@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="./css/style.css" />
+        <title>Introduction to JS: Loops and Arrays Revisited</title>
+    </head>
+    <body>
+        <header class="header">
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a href="/" class="link">Concept</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="./assignment.html" class="link">Assignment</a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+
+        <main class="main">
+            <section class="concept">
+                <h2 class="title">Concept: Loops and Arrays Revisted</h2>
+
+                <p class="paragraph">
+                    As a refresher, I will reiterate on the importance of loops
+                    and arrays. If you are still having issues with
+                    Understanding arrays and loops, revisit the previous
+                    exercises on those topics. Let's get to it.
+                </p>
+
+                <h3 class="sub-title">Basic Array Iteration</h3>
+                <p class="paragraph">
+                    Arrays are a fundamental data structure in programming,
+                    allowing you to store multiple values in a single variable.
+                    Understanding how to loop through arrays is crucial for
+                    manipulating and accessing data efficiently.
+                </p>
+
+                <p class="paragraph">
+                    A for loop is a control flow statement that allows code to
+                    be executed repeatedly based on a condition. It consists of
+                    three parts: initialization, condition, and increment. These
+                    parts help control the loop's execution.
+                </p>
+
+                <p class="paragraph">
+                    In JavaScript, a typical for loop looks like this:
+                </p>
+
+<code class="block">for (let i = 0; i < array.length; i++) {
+    // code to execute
+}
+</code>
+
+                <p class="paragraph">
+                    Here, <code class="inline">i</code> is the loop counter, <code class="inline">array.length</code> is the condition that keeps the loop running, and <code class="inline">i++</code> increments the counter after each iteration. This loop will run as long as <code class="inline">i</code> is less than the length of the array.
+                </p>
+
+                <p class="paragraph">
+                    Now that you understand the basic structure of a for loop, let's see how it works with an array. Consider the following array of numbers: <code class="inline">let numbers = [10, 20, 30, 40, 50]</code>
+                </p>
+
+                <p class="paragraph">
+                    To loop through this array and print each number, you can use a for loop like this:
+                </p>
+
+<code class="block">for (let i = 0; i < numbers.length; i++) {
+    console.log(numbers[i]);
+}
+</code>
+
+                <p class="paragraph">
+                    In this example, <code class="inline">numbers[i]</code> accesses each element of the array during each iteration of the loop. The loop will print each number in the array to the console.
+                </p>
+
+                <p class="paragraph">
+                    Let's explore a practical example of using a for loop with an array. Suppose you have an array of student grades and you want to calculate the average grade. Here's how you can do it:
+                </p>
+
+<code class="block">let grades = [85, 90, 78, 92, 88];
+let sum = 0;
+for (let i = 0; i < grades.length; i++) {
+    sum += grades[i];
+}
+
+let average = sum / grades.length;
+console.log(average);
+</code>
+
+                <p class="paragraph">
+                    In this example, the loop iterates over each grade, adding it to the <code class="inline">sum</code> variable. After the loop, the average is calculated by dividing the sum by the number of grades.
+                </p>
+
+                <p class="paragraph">
+                    In addition to iterating over arrays, for loops can be used to modify the elements within an array. For example, you might want to increase each number in an array by a certain value.
+                </p>
+
+                <p class="paragraph">Consider the following code:</p>
+
+<code class="block">let numbers = [1, 2, 3, 4, 5];
+for (let i = 0; i < numbers.length; i++) {
+    numbers[i] += 10;
+}
+console.log(numbers);
+</code>
+
+                <p class="paragraph">
+                    This loop adds <code class="inline">10</code> to each element in the numbers array, modifying the array in place. After the loop, the array will contain <code class="inline">[11, 12, 13, 14, 15]</code>.
+                </p>
+
+                <h3 class="sub-title">For...of</h3>
+
+                <p class="paragraph">
+                    We covered iterating/looping through elements of an array in detail above, but there are other ways to iterate through an array. One way is using the "for...of" syntax. To keep this section relative short, I will rewrite some of the above examples using "for...of" for you to compare and experiment with. 
+                </p>
+
+<code class="block">let numbers = [10, 20, 30, 40, 50];
+for (let number of numbers) {
+    console.log(number);
+}   
+</code>
+
+                <p class="paragraph">
+                    As you can see, we are declaring the array of numbers as usual, but our for loop looks different. Let me try to explain what the differences are.
+                </p>
+
+                <p class="paragraph">
+                    <code class="inline">let number</code> is declaring a variable called number. You can think of this as the variable holding the current element in the array we are looping through. Following the <code class="inline">of</code> keyword is the name of the array we want to loop through, in this case, <code class="inline">numbers</code>. The loop will terminate after the last element has been evaluated. 
+                </p>
+
+                <p class="paragraph">
+                    Here is how you write the average grade example using "for of":
+                </p>
+
+<code class="block">let grades = [85, 90, 78, 92, 88];
+let sum = 0;
+for (let grade of grades) {
+    sum += grade;
+}
+
+let average = sum / grades.length;
+console.log(average);
+</code>
+
+                <p class="paragraph">
+                    There is also a "for...in" loop. I'm excluding it for this lesson, but we will visit it in the near future.
+                </p>
+
+                <h3 class="sub-title">Array.forEach()</h3>
+
+                <p class="paragraph">
+                    One of the most useful methods available for arrays is the <code class="inline">forEach()</code> method on the Array object. This method allows you to execute a provided function once for each array element.
+                </p>
+
+                <p class="paragraph">
+                    The forEach method is a higher-order function, meaning it takes another function as an argument. This function is called a callback function. The forEach method will call this callback function once for each element in the array, passing the current element, its index, and the entire array as arguments.
+                </p>
+
+                <p class="paragraph">
+                    Using forEach can make your code more readable and concise, especially when you need to perform an operation on each element of an array.
+                </p>
+
+                <p class="paragraph">
+                    Suppose you have an array of numbers and you want to print each number to the console. You can achieve this using forEach as follows:
+                </p>
+
+<code class="block">const numbers = [1, 2, 3, 4, 5];
+numbers.forEach(function(number) {
+    console.log(number);
+});
+</code>
+
+                <p class="paragraph">
+                    In this example, the forEach method iterates over each element in the numbers array. The callback function takes one parameter, number, which represents the current element being processed. The console.log statement inside the callback function prints each number to the console.
+                </p>
+
+                <p class="paragraph">
+                    The forEach method can also access the index of each element in the array. This is useful when you need to know the position of an element while iterating. The callback function can take a second parameter, which represents the index of the current element.
+                </p>
+
+                <p class="paragraph">
+                    Consider the following example, where we print both the element and its index:
+                </p>
+
+<code class="block">const fruits = ['apple', 'banana', 'cherry'];
+fruits.forEach(function(fruit, index) {
+    console.log(index + ': ' + fruit);
+});
+</code>
+
+                <p class="paragraph">
+                    In this example, the forEach method iterates over the fruits array. The callback function takes two parameters: fruit for the current element and index for its position. The console.log statement prints the index and the fruit name.
+                </p>
+
+                <p class="paragraph">
+                    The callback function can take a third parameter, which represents the entire array. Here's an example:
+                </p>
+
+<code class="block">const numbers = [10, 20, 30];
+numbers.forEach(function(number, index, array) {
+    console.log('Element: ' + number + ', Total elements: ' + array.length);
+});
+</code>
+
+                <p class="paragraph">
+                    In this example, the forEach method iterates over the numbers array. The callback function takes three parameters: number for the current element, index for its position, and array for the entire array. The console.log statement prints each element and the total number of elements in the array.
+                </p>                
+
+                <p class="paragraph">
+                    It is highly recommended to read through <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array" class="text-link">MDN documentation on the Array object.</a>
+                </p>
+                
+
+                <h3 class="sub-title">Experiment Time</h3>
+
+                <p class="paragraph">
+                    Open <code class="inline">index.js</code> and try the
+                    following:
+                </p>
+
+                <ul class="list">
+                    <li class="list-item">
+                        Create an array and loop through it, logging out each value using the basic loop syntax.
+                    </li>
+                    <li class="list-item">
+                        Create an array and loop through it, logging out each value using the "for...of" syntax.
+                    </li>
+                    <li class="list-item">
+                        Create an array and loop through it, logging out each value using the Array.forEach() method.
+                    </li>
+                    <li class="list-item">
+                        Loop through an array using "for...of" and try assigning all the elements a new value. What happens?
+                    </li>
+                    <li class="list-item">
+                        Loop through an array using the Array.forEach() method and try assigning all the elements a new value. What happens?
+                    </li>
+                    <li class="list-item">
+                        Research "for...in" loops.
+                    </li>
+                </ul>
+
+                <p class="paragraph">
+                    Once you are done experimenting, comment out your code.
+                </p>
+            </section>
+        </main>
+
+        <footer></footer>
+
+        <!-- include the script at the end of the body -->
+        <script src="./js/index.js"></script>
+    </body>
+</html>
